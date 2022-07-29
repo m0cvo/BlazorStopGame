@@ -1,0 +1,33 @@
+﻿<h1>Stop Game</h1>
+<h3>Date: @DateTime.Today.ToShortDateString()</h3>
+
+<button class="btn btn-primary" @onclick="StartTime">Start</button>
+<button class="btn btn-primary" @onclick="StopTime">Stop</button>
+<button class="btn btn-primary" @onclick="yourTime">Your time</button>
+
+<p role="status">Start Time: @g</p>
+<p role="status">Stop Time: @s</p>
+<p role="status">Total Time: @t Milliseconds</p>
+
+@code {
+    static int g = 0;
+    static int s = 0;
+    static int t;
+
+    public void StartTime()
+    {
+        string st = DateTime.Now.Millisecond.ToString();
+        g = int.Parse(st);
+    }
+
+    public void StopTime()
+    {
+        string st2 = DateTime.Now.Millisecond.ToString();
+        s = int.Parse(st2);
+    }
+
+    public void yourTime()
+    {
+        t = (s - g);
+    }
+}
